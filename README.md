@@ -1,6 +1,5 @@
 # Refactoring
 SWEN 262 Refactoring Project
 
-Generic Readme 
-
-Created to simply have some content in the repo
+We don't know what we are doing!<br>
+![YOLO Gif](http://static.gifpal.com/uimages/bAajDqfHBd.gif)
