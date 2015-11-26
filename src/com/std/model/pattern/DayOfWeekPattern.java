@@ -26,7 +26,18 @@ public class DayOfWeekPattern extends RecurrencePattern {
 	 * UID Used for Serializable
 	 */
 	private static final long serialVersionUID = 5054653561326906195L;
-	
+
+	//TODO find a way to use enums instead of this weird ass boolean array
+//	private enum DAYS {
+//		SUNDAY,
+//		MONDAY,
+//		TUESDAY,
+//		WEDNESDAY,
+//		THURSDAY,
+//		FRIDAY,
+//		SATURDAY
+//	}
+
 	private static final int SUNDAY = 0;
 	private static final int MONDAY = 1;
 	private static final int TUESDAY = 2;
@@ -164,6 +175,28 @@ public class DayOfWeekPattern extends RecurrencePattern {
 			cal.add(Calendar.DATE, 1);
 		}
 		return dates;
+	}
+	
+	@Override
+	public String getDescription() {
+		String text = "";
+		if(onSunday())
+			text += "Sunday, ";
+		if(onMonday())
+			text += "Monday, ";
+		if(onTuesday())
+			text += "Tuesday, ";
+		if(onWednesday())
+			text += "Wednesday, ";
+		if(onThursday())
+			text += "Thursday, ";
+		if(onFriday())
+			text += "Friday, ";
+		if(onSaturday())
+			text += "Saturday, ";
+		if(text.length() > 0)
+			text = "recurs on " + text.substring(0, text.length()-2);
+		return text;
 	}
 
 	/**

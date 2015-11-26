@@ -76,6 +76,16 @@ public class NDaysPattern extends RecurrencePattern {
 		
 		return dates;
 	}
+
+	@Override
+	public String getDescription() {
+		if(instanceEvery() == 1)
+			return "recurs every day";
+		else if(instanceEvery() > 1)
+			return "recurs every " + instanceEvery() + " days ";
+		else
+			return "";
+	}
 	
 	/**
 	 * This method is for loading the Recurrence pattern

@@ -78,56 +78,15 @@ public class AppointmentUtility {
 	}
 	
 	public static String getPatternDescription(RecurrencePattern pattern) {
-		// start with a blank string
-		String text = "";
-		
 		if(pattern != null) {
-			
-			if(pattern instanceof NDaysPattern) {
-				
-				// generate the description string for NDaysPattern
-				NDaysPattern ptt = (NDaysPattern)pattern;
-				if(ptt.instanceEvery() == 1)
-					text = "recurs every day";
-				else if(ptt.instanceEvery() > 1)
-					text = "recurs every " + ptt.instanceEvery() + " days ";
-				
-			} else if(pattern instanceof DayOfWeekPattern) {
-				
-				// generate the description string for DayOfWeekPattern
-				DayOfWeekPattern ptt = (DayOfWeekPattern)pattern;
-				if(ptt.onSunday())
-					text += (text.length() == 0 ? "" : ", ") + "Sunday";
-				if(ptt.onMonday())
-					text += (text.length() == 0 ? "" : ", ") + "Monday";
-				if(ptt.onTuesday())
-					text += (text.length() == 0 ? "" : ", ") + "Tuesday";
-				if(ptt.onWednesday())
-					text += (text.length() == 0 ? "" : ", ") + "Wednesday";
-				if(ptt.onThursday())
-					text += (text.length() == 0 ? "" : ", ") + "Thursday";
-				if(ptt.onFriday())
-					text += (text.length() == 0 ? "" : ", ") + "Friday";
-				if(ptt.onSaturday())
-					text += (text.length() == 0 ? "" : ", ") + "Saturday";
-				if(text.length() > 0)
-					text = "recurs on " + text;
-			}
-			
-			// append the RecurrencePattern dateRange data
-			if(text.length() > 0)
-				text += " from " + FORMAT.format(pattern.getRange().getStartDate())
+			String text = pattern.getDescription();
+			if (text.length() > 0)
+				return text + " from " + FORMAT.format(pattern.getRange().getStartDate())
 					+ " to " + FORMAT.format(pattern.getRange().getEndDate());
+			else
+				return NO_RECUR;
 		}
-		
-		// if we've come this far and still have an empty string,
-		// either the pattern is null, or it otherwise doesn't
-		// recur.  so, set the text to reflect that, and replace
-		// whatever pattern we had with a null pattern.
-		if(text.length() == 0)
-			text = NO_RECUR;
-		
-		return text;
+		return NO_RECUR;
 	}
 	
 	public static String getDurationDescription(long ms) {
@@ -146,15 +105,17 @@ public class AppointmentUtility {
 		// construct the string
 		String s = "";
 		if(weeks != 0)
-			s += weeks + " week" + (weeks == 1 ? "" : "s");
+			s += weeks + " week(s), ";
 		if(days != 0)
-			s += (s.length() == 0 ? "" : ", ") + days + " day" + (days == 1 ? "" : "s");
+			s += days + " day(s), ";
 		if(hours != 0)
-			s += (s.length() == 0 ? "" : ", ") + hours + " hour" + (hours == 1 ? "" : "s");
+			s += hours + " hour(s), ";
 		if(min != 0)
-			s += (s.length() == 0 ? "" : ", ") + min + " minute" + (min == 1 ? "" : "s");
+			s += min + " minute(s), ";
 		if(s.length() == 0)
 			s = "instantaneous";
+		else
+			s = s.substring(0, s.length()-2);
 		
 		// set the text
 		return s;

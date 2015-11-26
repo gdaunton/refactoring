@@ -1,5 +1,6 @@
 # Intellij Core
 .idea
+*.iml
 
 ### Java template
 *.class

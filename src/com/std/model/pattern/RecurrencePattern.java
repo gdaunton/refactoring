@@ -74,6 +74,8 @@ public abstract class RecurrencePattern implements Serializable {
 			throw new IllegalArgumentException("duration is less than 0");
 		occuranceRange = d;
 	}
+
+	public abstract String getDescription();
 	
 	/**
 	 * This method is for loading the Reoccurence pattern
