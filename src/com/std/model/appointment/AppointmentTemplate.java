@@ -114,22 +114,6 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	}
 
 	/**
-	 * Sets the title of the appointment, validates
-	 * the input, and marks the Observable as changed
-	 * if a change has taken place.
-	 * 
-	 * @param title the new title of the appointment.
-	 * @throws NullPointerException if title is null
-	 */
-	private void internalSetTitle(String title) {
-		if(title == null)
-			throw new NullPointerException("title");
-		if(!title.equals(this.title))
-			this.setChanged();
-		this.title = title;
-	}
-
-	/**
 	 * Sets the title of the appointment, and
 	 * notifies observers if a change has taken
 	 * place.
@@ -138,26 +122,14 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws NullPointerException if title is null
 	 */
 	public void setTitle(String title) {
-		internalSetTitle(title);
+		if(title == null)
+			throw new NullPointerException("title");
+		if(!title.equals(this.title))
+			this.setChanged();
+		this.title = title;
 		this.notifyObservers();
 	}
-
-	/**
-	 * Sets the description of the appointment, validates
-	 * the input, and marks the Observable as changed
-	 * if a change has taken place.
-	 * 
-	 * @param description the new description for the appointment
-	 * @throws NullPointerException if description is null
-	 */
-	private void internalSetDescription(String description) {
-		if(description == null)
-			throw new NullPointerException("description");
-		if(!description.equals(this.description))
-			this.setChanged();
-		this.description = description;
-	}
-
+	
 	/**
 	 * Sets the description of the appointment, and
 	 * notifies observers if a change has taken
@@ -167,24 +139,12 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws NullPointerException if description is null
 	 */
 	public void setDescription(String description) {
-		internalSetDescription(description);
-		this.notifyObservers();
-	}
-
-	/**
-	 * Sets the location of the appointment, validates
-	 * the input, and marks the Observable as changed
-	 * if a change has taken place.
-	 * 
-	 * @param location the new location for the appointment
-	 * @throws NullPointerException if loc is null
-	 */
-	private void internalSetLocation(String loc) {
-		if(loc == null)
-			throw new NullPointerException("loc");
-		if(!loc.equals(this.location))
+		if(description == null)
+			throw new NullPointerException("description");
+		if(!description.equals(this.description))
 			this.setChanged();
-		this.location = loc;
+		this.description = description;
+		this.notifyObservers();
 	}
 
 	/**
@@ -196,24 +156,12 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws NullPointerException if loc is null
 	 */
 	public void setLocation(String loc) {
-		internalSetLocation(loc);
-		this.notifyObservers();
-	}
-	
-	/**
-	 * Sets the duration of the appointment, validates
-	 * the input, and marks the Observable as changed
-	 * if a change has taken place.
-	 * 
-	 * @param duration the new duration for the appointment in milliseconds
-	 * @throws IllegalArgumentException if duration is less than 0
-	 */
-	private void internalSetDuration(long duration) {
-		if(duration < 0)
-			throw new IllegalArgumentException("duration is less than 0");
-		if(duration != this.duration)
+		if(loc == null)
+			throw new NullPointerException("loc");
+		if(!loc.equals(this.location))
 			this.setChanged();
-		this.duration = duration;
+		this.location = loc;
+		this.notifyObservers();
 	}
 
 	/**
@@ -225,21 +173,12 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws IllegalArgumentException if duration is less than 0
 	 */
 	public void setDuration(long duration) {
-		internalSetDuration(duration);
-		this.notifyObservers();
-	}
-
-	/**
-	 * Sets the pattern of the appointment, validates
-	 * the input, and marks the Observable as changed
-	 * if a change has taken place.
-	 * 
-	 * @param pattern the new pattern for the appointment
-	 */
-	private void internalSetPattern(RecurrencePattern pattern) {
-		if(pattern == null ? this.recPattern != null : !pattern.equals(this.recPattern))
+		if(duration < 0)
+			throw new IllegalArgumentException("duration is less than 0");
+		if(duration != this.duration)
 			this.setChanged();
-		this.recPattern = pattern;
+		this.duration = duration;
+		this.notifyObservers();
 	}
 
 	/**
@@ -250,7 +189,9 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @param pattern the new pattern for the appointment
 	 */
 	public void setPattern(RecurrencePattern pattern) {
-		internalSetPattern(pattern);
+		if(pattern == null ? this.recPattern != null : !pattern.equals(this.recPattern))
+			this.setChanged();
+		this.recPattern = pattern;
 		this.notifyObservers(recPattern);
 	}
 
@@ -262,11 +203,11 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @param apptTmple the new appointment fields
 	 */
 	public void setFields(AppointmentTemplate apptTmpl) {
-		internalSetTitle(apptTmpl.getTitle());
-		internalSetDescription(apptTmpl.getDescription());
-		internalSetLocation(apptTmpl.getLocation());
-		internalSetDuration(apptTmpl.getDuration());
-		internalSetPattern(apptTmpl.getPattern());
+		setTitle(apptTmpl.getTitle());
+		setDescription(apptTmpl.getDescription());
+		setLocation(apptTmpl.getLocation());
+		setDuration(apptTmpl.getDuration());
+		setPattern(apptTmpl.getPattern());
 		this.notifyObservers();
 	}
 
@@ -278,11 +219,11 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
 	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
-		internalSetTitle((String)istream.readObject());
-		internalSetDescription((String)istream.readObject());
-		internalSetLocation((String)istream.readObject());
-		internalSetDuration(istream.readLong());
-		internalSetPattern((RecurrencePattern)istream.readObject());
+		setTitle((String)istream.readObject());
+		setDescription((String)istream.readObject());
+		setLocation((String)istream.readObject());
+		setDuration(istream.readLong());
+		setPattern((RecurrencePattern)istream.readObject());
 	}
 	
 	/**
@@ -315,10 +256,10 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 */
 	public AppointmentTemplate(String title, String description, String location, long duration) {
 		super();
-		internalSetTitle(title);
-		internalSetDescription(description);
-		internalSetLocation(location);
-		internalSetDuration(duration);
+		setTitle(title);
+		setDescription(description);
+		setLocation(location);
+		setDuration(duration);
 		recPattern = null;
 		
 		this.notifyObservers();
