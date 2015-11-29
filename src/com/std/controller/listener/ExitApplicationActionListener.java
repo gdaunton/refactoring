@@ -13,13 +13,7 @@ import com.std.controller.CalendarController;
  * @author xxx
  *
  */
-public class ExitApplicationActionListener implements ActionListener {
-
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
+public class ExitApplicationActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -27,7 +21,7 @@ public class ExitApplicationActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public ExitApplicationActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -38,6 +32,6 @@ public class ExitApplicationActionListener implements ActionListener {
 	 * @param e is the action event, it is not used
 	 */
 	public void actionPerformed(ActionEvent e) {
-		controller.getView().dispose();
+		getController().getView().dispose();
 	}
 }

@@ -14,13 +14,8 @@ import com.std.view.block.DayBlock;
  * @author xxx
  *
  */
-public class DateSelectionMouseListener implements MouseListener {
+public class DateSelectionMouseListener extends ControllerListener implements MouseListener {
 	
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -28,7 +23,7 @@ public class DateSelectionMouseListener implements MouseListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public DateSelectionMouseListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 		
 	/**
@@ -41,7 +36,7 @@ public class DateSelectionMouseListener implements MouseListener {
 		//get the day block that this listener was listening too
 		DayBlock db = (DayBlock) e.getSource();
 		Date newSelectedDate = db.getDate();
-		controller.getModel().setCurrentDate(newSelectedDate);
+		getController().getModel().setCurrentDate(newSelectedDate);
 	}
 
 	/**

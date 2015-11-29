@@ -12,13 +12,7 @@ import com.std.model.CalendarModelUtility;
  * to the CalendarView.  
  * @author xxx
  */
-public class PrevButtonActionListener implements ActionListener {
-
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
+public class PrevButtonActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -26,7 +20,7 @@ public class PrevButtonActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public PrevButtonActionListener(CalendarController cc){
-		controller = cc;
+		 super(cc);
 	}
 	
 	/**
@@ -40,18 +34,18 @@ public class PrevButtonActionListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		
-		switch(controller.getView().getTabbedState()) {
+		switch(getController().getView().getTabbedState()) {
 		
 		case MONTHLY:
-			CalendarModelUtility.previousMonth(controller.getModel());
+			CalendarModelUtility.previousMonth(getController().getModel());
 			break;
 			
 		case WEEKLY:
-			CalendarModelUtility.previousWeek(controller.getModel());
+			CalendarModelUtility.previousWeek(getController().getModel());
 			break;
 			
 		case DAILY:
-			CalendarModelUtility.previousDay(controller.getModel());
+			CalendarModelUtility.previousDay(getController().getModel());
 		}
 	}
 }

@@ -8,10 +8,9 @@ import javax.swing.JOptionPane;
 import com.std.controller.CalendarController;
 import com.std.controller.dialog.AppointmentDialog;
 import com.std.model.CalendarModelUtility;
-import com.std.model.appointment.AppointmentTemplate;
 import com.std.model.appointment.RefAppointment;
 
-public class EditRecurringAppointmentActionListener implements ActionListener {
+public class EditRecurringAppointmentActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * a reference to the controller so that this listener
@@ -25,7 +24,8 @@ public class EditRecurringAppointmentActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public EditRecurringAppointmentActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
+		this.controller = getController();
 	}
 	
 	/**

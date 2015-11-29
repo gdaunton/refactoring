@@ -99,7 +99,7 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	public RefAppointment(Date d, AppointmentTemplate p){
 		super();
 		setTemplate(p);
-		internalSetStartDate(d);
+		setStartDate(d);
 		
 		notifyObservers(null);
 	}
@@ -135,22 +135,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 	
 	/**
-	 * Sets the appointment start date, validates the
-	 * input, and marks Observable as changed if
-	 * any changes have been made.
-	 * 
-	 * @param date the new appointment start date
-	 * @throws NullPointerException if date is null
-	 */
-	private void internalSetStartDate(Date date){
-		if(date == null)
-			throw new NullPointerException("date");
-		if(!date.equals(this.startDate))
-			this.setChanged();
-		this.startDate = date;
-	}
-
-	/**
 	 * Sets the appointment start date, and
 	 * notifies any Observers if
 	 * any changes have been made.
@@ -158,7 +142,11 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	 * @param date the new start date
 	 */
 	public void setStartDate(Date date){
-		internalSetStartDate(date);
+		if(date == null)
+			throw new NullPointerException("date");
+		if(!date.equals(this.startDate))
+			this.setChanged();
+		this.startDate = date;
 		this.notifyObservers();
 	}
 	
@@ -337,7 +325,7 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	 */
 	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
 		setTemplate((AppointmentTemplate)istream.readObject());
-		internalSetStartDate((Date)istream.readObject());
+		setStartDate((Date)istream.readObject());
 	}
 	
 	/**

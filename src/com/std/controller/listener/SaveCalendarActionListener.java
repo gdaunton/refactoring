@@ -20,13 +20,8 @@ import com.std.model.CalendarModel;
  * @author xxx
  *
  */
-public class SaveCalendarActionListener implements ActionListener {
+public class SaveCalendarActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -34,7 +29,7 @@ public class SaveCalendarActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public SaveCalendarActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -44,7 +39,7 @@ public class SaveCalendarActionListener implements ActionListener {
 	 * @param ActionEvent e is the event sent when the save button is clicked.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		controller.save();
+	    getController().save();
 	}
 
 }

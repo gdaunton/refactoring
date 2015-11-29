@@ -8,13 +8,7 @@ import com.std.controller.dialog.AppointmentDialog;
 import com.std.model.CalendarModelUtility;
 import com.std.model.appointment.RefAppointment;
 
-public class NewAppointmentActionListener implements ActionListener {
-
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
+public class NewAppointmentActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -22,7 +16,7 @@ public class NewAppointmentActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public NewAppointmentActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 		
 	/**
@@ -31,10 +25,10 @@ public class NewAppointmentActionListener implements ActionListener {
 	 */
 	
 	public void actionPerformed(ActionEvent e) {
-		RefAppointment ref = CalendarModelUtility.getNewAppointment(controller.getModel());
+		RefAppointment ref = CalendarModelUtility.getNewAppointment(getController().getModel());
 		
-		if(AppointmentDialog.changeAppointment(controller.getView(), ref)) {
-			CalendarModelUtility.addUsingPattern(controller.getModel(), ref);
+		if(AppointmentDialog.changeAppointment(getController().getView(), ref)) {
+			CalendarModelUtility.addUsingPattern(getController().getModel(), ref);
 		}
 	}
 

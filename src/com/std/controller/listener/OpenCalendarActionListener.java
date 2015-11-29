@@ -1,14 +1,10 @@
 package com.std.controller.listener;
-
-import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.swing.JOptionPane;
 
 import com.std.controller.CalendarController;
-import com.std.model.CalendarModel;
+
 
 
 /**
@@ -17,19 +13,14 @@ import com.std.model.CalendarModel;
  * @author xxx
  * 
  */
-public class OpenCalendarActionListener implements ActionListener {
+public class OpenCalendarActionListener extends ControllerListener implements ActionListener {
 	
 	private class OpenRunnable implements Runnable {
 		public void run() {
-			controller.open();
+		    getController().open();
 		}
 	}
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -37,10 +28,10 @@ public class OpenCalendarActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public OpenCalendarActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		controller.confirm(new OpenRunnable());
+	    getController().confirm(new OpenRunnable());
 	}
 }

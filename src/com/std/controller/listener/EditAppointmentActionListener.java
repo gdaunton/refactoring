@@ -11,13 +11,8 @@ import com.std.model.CalendarModelUtility;
 import com.std.model.appointment.AppointmentTemplate;
 import com.std.model.appointment.RefAppointment;
 
-public class EditAppointmentActionListener implements ActionListener {
+public class EditAppointmentActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -25,7 +20,7 @@ public class EditAppointmentActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public EditAppointmentActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -36,21 +31,21 @@ public class EditAppointmentActionListener implements ActionListener {
 	 * the user pressed the edit button.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		RefAppointment ref = controller.getModel().getCurrentAppointment();
+		RefAppointment ref = getController().getModel().getCurrentAppointment();
 		if(ref != null) {
 			if(ref.getPattern() != null) {
 				AppointmentTemplate apptTmpl = (AppointmentTemplate)ref.getTemplate().clone();
 				apptTmpl.setPattern(null);
 				RefAppointment appt = new RefAppointment(ref.getStartDate(), apptTmpl);
 				
-				if(AppointmentDialog.changeAppointment(controller.getView(), appt)) {
-					controller.getModel().getAppointmentSet().remove(ref);
-					CalendarModelUtility.add(controller.getModel(), appt);
+				if(AppointmentDialog.changeAppointment(getController().getView(), appt)) {
+					getController().getModel().getAppointmentSet().remove(ref);
+					CalendarModelUtility.add(getController().getModel(), appt);
 				}
 			} else
-				JOptionPane.showMessageDialog(controller.getView(), "the selected appointment does not recur", "", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(getController().getView(), "the selected appointment does not recur", "", JOptionPane.ERROR_MESSAGE);
 		} else
-			JOptionPane.showMessageDialog(controller.getView(), "no appointment is selected", "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(getController().getView(), "no appointment is selected", "", JOptionPane.ERROR_MESSAGE);
 	}
 
 }

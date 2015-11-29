@@ -14,13 +14,8 @@ import com.std.controller.CalendarController;
  * @author xxx
  *
  */
-public class NewCalendarActionListener implements ActionListener {
+public class NewCalendarActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -28,7 +23,7 @@ public class NewCalendarActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public NewCalendarActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -40,9 +35,9 @@ public class NewCalendarActionListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
-			controller.getModel().load(null);
+			getController().getModel().load(null);
 		} catch(Exception ex) {
-			controller.handleException(ex);
+			getController().handleException(ex);
 		}
 	}
 

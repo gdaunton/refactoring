@@ -1,19 +1,12 @@
 package com.std.controller.listener;
 
-import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import com.std.controller.CalendarController;
 
-public class SaveAsCalendarActionListener implements ActionListener {
+public class SaveAsCalendarActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -21,7 +14,7 @@ public class SaveAsCalendarActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public SaveAsCalendarActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	 /** This allows the user to save a calendar when they 
 	 * 	click the saveAs  button.
@@ -30,7 +23,7 @@ public class SaveAsCalendarActionListener implements ActionListener {
 	 * 	the user pressed the saveAs button.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		controller.saveAs();
+	    getController().saveAs();
 	}
 
 }
