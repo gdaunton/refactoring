@@ -6,7 +6,7 @@ import com.std.controller.CalendarController;
 
 /**
  * Supper Calendar Listener.
- * @author Huy Pham
+ * @author Quang Vu
  * 
  */
 public abstract class ControllerListener{
