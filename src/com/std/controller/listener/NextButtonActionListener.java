@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.std.controller.CalendarController;
-import com.std.model.CalendarModelUtility;
+import com.std.model.*;
 
 /**
  * This class serves as the Action Listener for the next
@@ -34,7 +34,7 @@ public class NextButtonActionListener extends ControllerListener implements Acti
 	 *button is clicked
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
+		ICalendarUtility CalendarModelUtility = new CalendarModelUtility();
 		switch(getController().getView().getTabbedState()) {
 		
 		case MONTHLY:
