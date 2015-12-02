@@ -448,6 +448,7 @@ public class CalendarModel extends Observable {
 	public void save(File file) throws IOException {
 		if(file == null)
 			throw new NullPointerException("file");
+		@SuppressWarnings("resource")
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 		out.writeObject(defaultApptTmpl);
 		out.writeInt(apptTmplSet.size());
@@ -474,6 +475,7 @@ public class CalendarModel extends Observable {
 		Set<RefAppointment> apptSet = new HashSet<RefAppointment>();
 		AppointmentTemplate defaultApptTmpl = getNewDefaults();
 		if(file != null) {
+			@SuppressWarnings("resource")
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 			defaultApptTmpl = (AppointmentTemplate)in.readObject();
 			int count = in.readInt();

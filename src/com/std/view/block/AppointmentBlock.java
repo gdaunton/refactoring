@@ -21,6 +21,11 @@ import com.std.model.appointment.RefAppointment;
  */
 public class AppointmentBlock extends JTextArea {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private boolean limitDisplay;
 	
 	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("h:mm aa");

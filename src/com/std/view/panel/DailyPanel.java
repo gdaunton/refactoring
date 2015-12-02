@@ -11,7 +11,6 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Set;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -33,6 +32,11 @@ import com.std.view.block.WeeklyDayBlock;
 
 public class DailyPanel extends JPanel  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * These are the representaions of all the days in this
 	 * week
