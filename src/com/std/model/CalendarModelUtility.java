@@ -16,7 +16,7 @@ import com.std.model.appointment.AppointmentTemplate;
 import com.std.model.appointment.AppointmentUtility;
 import com.std.model.appointment.RefAppointment;
 
-public class CalendarModelUtility {
+public class CalendarModelUtility implements ICalendarUtility {
 	
 	/**
 	 * This method adds a certain amount to a date object and
@@ -49,7 +49,7 @@ public class CalendarModelUtility {
 	 * @param model is the model to roll
 	 */
 	
-	public static void nextMonth(CalendarModel model) {
+	public void nextMonth(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.MONTH, 1));
 	}
 	
@@ -59,7 +59,7 @@ public class CalendarModelUtility {
 	 * @param model is the model to roll
 	 */
 	
-	public static void nextWeek(CalendarModel model) {
+	public void nextWeek(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.DATE, 7));
 	}
 	
@@ -69,7 +69,7 @@ public class CalendarModelUtility {
 	 * @param model is the model to roll
 	 */
 	
-	public static void nextDay(CalendarModel model) {
+	public void nextDay(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.DATE, 1));
 	}
 	

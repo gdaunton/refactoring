@@ -19,13 +19,7 @@ import com.std.model.appointment.RefAppointment;
  *
  */
 
-public class RemoveAllAppointmentActionListener implements ActionListener {
-
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
+public class RemoveAllAppointmentActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -33,7 +27,7 @@ public class RemoveAllAppointmentActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public RemoveAllAppointmentActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -46,10 +40,10 @@ public class RemoveAllAppointmentActionListener implements ActionListener {
 	 * @param e is the action event, it is not used
 	 */
 	public void actionPerformed(ActionEvent e) {
-		RefAppointment ref = controller.getModel().getCurrentAppointment();
+		RefAppointment ref = getController().getModel().getCurrentAppointment();
 		if(ref != null)
-			controller.getModel().getAppointmentTemplateSet().remove(ref.getTemplate());
+		    getController().getModel().getAppointmentTemplateSet().remove(ref.getTemplate());
 		else
-			JOptionPane.showMessageDialog(controller.getView(), "no appointment is selected", "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(getController().getView(), "no appointment is selected", "", JOptionPane.ERROR_MESSAGE);
 	}
 }

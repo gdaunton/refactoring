@@ -189,7 +189,7 @@ public class DateDialog extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			
 			// get the source
-			JComboBox source = (JComboBox)e.getSource();
+			JComboBox<?> source = (JComboBox<?>)e.getSource();
 			
 			// get the hour
 			int hour = source.getSelectedIndex();
@@ -223,7 +223,7 @@ public class DateDialog extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			
 			// get the source
-			JComboBox source = (JComboBox)e.getSource();
+			JComboBox<?> source = (JComboBox<?>)e.getSource();
 			
 			// get the minute
 			int minute = Integer.parseInt(source.getSelectedItem().toString());
@@ -257,7 +257,7 @@ public class DateDialog extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			
 			// get the source
-			JComboBox source = (JComboBox)e.getSource();
+			JComboBox<?> source = (JComboBox<?>)e.getSource();
 			
 			// derive the selection
 			int amPm;
@@ -589,7 +589,7 @@ public class DateDialog extends JDialog {
 		ints[0] = "12";
 		for(int i = 1; i < ints.length; i++)
 			ints[i] = "" + i;
-		JComboBox hours = new JComboBox(ints);
+		JComboBox<?> hours = new JComboBox<Object>(ints);
 		((BasicComboBoxRenderer)hours.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		hours.setSelectedIndex(cal.get(Calendar.HOUR) % 12);
 		hours.addActionListener(new HourListener());
@@ -598,13 +598,13 @@ public class DateDialog extends JDialog {
 		ints = new String[60];
 		for(int i = 0; i < ints.length; i++)
 			ints[i] = (i < 10 ? "0" : "") + i;
-		JComboBox minutes = new JComboBox(ints);
+		JComboBox<?> minutes = new JComboBox<Object>(ints);
 		((BasicComboBoxRenderer)minutes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		minutes.setSelectedIndex(cal.get(Calendar.MINUTE));
 		minutes.addActionListener(new MinuteListener());
 		
 		// AM / PM combo box
-		JComboBox amPm = new JComboBox(
+		JComboBox<?> amPm = new JComboBox<Object>(
 			new String[] {
 				"AM",
 				"PM"

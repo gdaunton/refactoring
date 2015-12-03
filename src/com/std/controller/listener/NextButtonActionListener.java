@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.std.controller.CalendarController;
-import com.std.model.CalendarModelUtility;
+import com.std.model.*;
 
 /**
  * This class serves as the Action Listener for the next
@@ -12,13 +12,8 @@ import com.std.model.CalendarModelUtility;
  * to the CalendarView.  
  * @author xxx
  */
-public class NextButtonActionListener implements ActionListener {
+public class NextButtonActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -26,7 +21,7 @@ public class NextButtonActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public NextButtonActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -39,19 +34,19 @@ public class NextButtonActionListener implements ActionListener {
 	 *button is clicked
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
-		switch(controller.getView().getTabbedState()) {
+		ICalendarUtility CalendarModelUtility = new CalendarModelUtility();
+		switch(getController().getView().getTabbedState()) {
 		
 		case MONTHLY:
-			CalendarModelUtility.nextMonth(controller.getModel());
+			CalendarModelUtility.nextMonth(getController().getModel());
 			break;
 			
 		case WEEKLY:
-			CalendarModelUtility.nextWeek(controller.getModel());
+			CalendarModelUtility.nextWeek(getController().getModel());
 			break;
 			
 		case DAILY:
-			CalendarModelUtility.nextDay(controller.getModel());
+			CalendarModelUtility.nextDay(getController().getModel());
 		}
 	}
 }

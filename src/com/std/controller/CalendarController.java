@@ -25,8 +25,6 @@ import com.std.controller.listener.RemoveAppointmentActionListener;
 import com.std.controller.listener.SaveAsCalendarActionListener;
 import com.std.controller.listener.SaveCalendarActionListener;
 import com.std.model.CalendarModel;
-import com.std.model.appointment.AppointmentTemplate;
-import com.std.model.appointment.RefAppointment;
 import com.std.view.CalendarView;
 
 /**
@@ -61,11 +59,6 @@ public class CalendarController implements Observer {
 	 *  @param param is the parameter sent by the notifyObservers methods 
 	 */
 	public void update(Observable o, Object param) {
-		boolean setChanged = 
-			param != null && 
-			(	param instanceof AppointmentTemplate ||
-				param instanceof RefAppointment);
-		
 		theView.update(
 			theModel.getAppointmentSet(), 
 			theModel.getCurrentDate(), 

@@ -14,13 +14,8 @@ import com.std.controller.CalendarController;
  * @author xxx
  *
  */
-public class AboutActionListener implements ActionListener {
+public class AboutActionListener extends ControllerListener implements ActionListener {
 
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 
 	/**
 	 * creates a new AboutActionListener
@@ -28,7 +23,7 @@ public class AboutActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public AboutActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -38,6 +33,7 @@ public class AboutActionListener implements ActionListener {
 	 * @param e is the action event, it is not used
 	 */
 	public void actionPerformed(ActionEvent e) {
-		JOptionPane.showMessageDialog(controller.getView(), "DCal.  Copyright 2008, Super Team D, RIT", "About", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getController().getView(), "DCal.  Copyright 2008, Super Team D, RIT", "About", JOptionPane.INFORMATION_MESSAGE);
 	}
+
 }

@@ -23,6 +23,10 @@ import com.std.util.range.DateRange;
 public abstract class RecurrencePattern implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * This is the span of time that the appointment
 	 * can exist on.
 	 */
@@ -74,6 +78,8 @@ public abstract class RecurrencePattern implements Serializable {
 			throw new IllegalArgumentException("duration is less than 0");
 		occuranceRange = d;
 	}
+
+	public abstract String getDescription();
 	
 	/**
 	 * This method is for loading the Reoccurence pattern

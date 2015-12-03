@@ -14,13 +14,7 @@ import com.std.controller.dialog.AppointmentDialog;
  * @author xxx
  *
  */
-public class PreferencesActionListener implements ActionListener {
-
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
+public class PreferencesActionListener extends ControllerListener implements ActionListener {
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -28,7 +22,7 @@ public class PreferencesActionListener implements ActionListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public PreferencesActionListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -38,6 +32,6 @@ public class PreferencesActionListener implements ActionListener {
 	 * @param e not used
 	 */
 	public void actionPerformed(ActionEvent e) {
-		AppointmentDialog.changeAppointmentDefaults(controller.getView(), controller.getModel());
+		AppointmentDialog.changeAppointmentDefaults(getController().getView(), getController().getModel());
 	}
 }

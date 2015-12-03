@@ -40,6 +40,11 @@ import com.std.view.panel.WeeklyPanel;
  */
 
 public class CalendarView extends JFrame {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private final static SimpleDateFormat FORMAT = new SimpleDateFormat("MMMM, yyyy");
 	
 	/**

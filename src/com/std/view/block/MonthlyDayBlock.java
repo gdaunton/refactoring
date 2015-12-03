@@ -30,6 +30,11 @@ import com.std.util.range.DayRange;
  */
 
 public class MonthlyDayBlock extends JToggleButton implements DayBlock {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("d");
 	
 	/**

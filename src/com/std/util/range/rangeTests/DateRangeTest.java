@@ -24,6 +24,7 @@ public class DateRangeTest {
 		assertFalse(dRange.equals(dRange2));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testGetDurationInDays() {
 		Calendar cal = Calendar.getInstance();
