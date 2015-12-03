@@ -9,7 +9,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.ButtonGroup;
@@ -68,11 +67,6 @@ public class AppointmentDialog extends JDialog {
 	 * UID Used for Serializable
 	 */
 	private static final long serialVersionUID = 5613941454015423846L;
-	
-	/**
-	 * format to use when displaying date information
-	 */
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
 	
 	/**
 	 * Prompts the user to change an Appointment.

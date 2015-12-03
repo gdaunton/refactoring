@@ -36,6 +36,10 @@ import com.std.view.block.WeeklyDayBlock;
 public class WeeklyPanel extends JPanel  {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * These are the representaions of all the days in this
 	 * week
 	 */

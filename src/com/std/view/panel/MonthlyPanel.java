@@ -39,6 +39,10 @@ import com.std.view.block.MonthlyDayBlock;
  */
 public class MonthlyPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<MonthlyDayBlock> blocks;
 
 	/**

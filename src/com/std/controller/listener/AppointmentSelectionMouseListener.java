@@ -14,13 +14,8 @@ import com.std.view.block.AppointmentBlock;
  * @author xxx
  *
  */
-public class AppointmentSelectionMouseListener implements MouseListener {
+public class AppointmentSelectionMouseListener extends ControllerListener implements MouseListener {
 	
-	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
-	 */
-	private CalendarController controller;
 	
 	/**
 	 * creates a new AppointmentSelectionMouseListener
@@ -28,7 +23,7 @@ public class AppointmentSelectionMouseListener implements MouseListener {
 	 * @param CalendarControler cc is the reference to the controller 
 	 */
 	public AppointmentSelectionMouseListener(CalendarController cc){
-		controller = cc;
+		super(cc);
 	}
 	
 	/**
@@ -39,7 +34,7 @@ public class AppointmentSelectionMouseListener implements MouseListener {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		AppointmentBlock appt = (AppointmentBlock) e.getSource();
-		controller.getModel().setCurrentAppointment(appt.getAppointment());
+		getController().getModel().setCurrentAppointment(appt.getAppointment());
 	}
 
 	/**
