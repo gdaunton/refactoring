@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/bin/
+=======
 # Intellij Core
 .idea
 *.iml
@@ -56,3 +59,4 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+>>>>>>> 9917df9441977f066d554171e2dca0829ce60ad9
